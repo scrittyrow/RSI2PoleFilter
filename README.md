@@ -26,8 +26,6 @@ This project solves that by introducing true recursive filtering from digital si
 🔍 Technical Summary
 The filtered RSI is computed using the following difference equation:
 
-Copy
-Edit
 y[n] = b0 * x[n] + b1 * x[n−1] + b2 * x[n−2] − a1 * y[n−1] − a2 * y[n−2]
 Where:
 
