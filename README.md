@@ -56,8 +56,6 @@ Feeding cleaner signals into automated systems
 
 🧪 Example Configuration
 pinescript
-Copy
-Edit
 b0 = 0.4
 b1 = 0.2
 b2 = 0.1
