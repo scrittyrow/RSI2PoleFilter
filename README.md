@@ -1,34 +1,31 @@
-# Relative Strength Indicator
+# 2-Pole RSI Filter
 
-This is a TradingView Pine Script that plots a custom Relative Strength Indicator (RSI) with optional smoothing and divergence detection. It behaves similarly to the classic RSI but includes extended features like moving average overlays, Bollinger Bands, and bullish/bearish divergence detection.
+The **2-Pole RSI Filter** is a custom TradingView Pine Script that extends the classic RSI with advanced filtering, smoothing, and divergence detection. It aims to reduce noise and improve the interpretability of RSI signals using techniques like moving average overlays and visual gradients.
 
 
 ## Features
 
-- Customizable RSI length and source input
-- Optional smoothing using various moving average types
-- Bollinger Bands overlay (when selected)
-- Background fills for overbought/oversold zones
-- Divergence detection (bullish and bearish)
-- Alerts for divergences
+- Standard RSI calculation with customizable length and source
+- Optional smoothing using:
+  - SMA, EMA, RMA, WMA, VWMA
+  - SMA + Bollinger Bands
+- Visual enhancements:
+  - Overbought/Oversold background gradient
+  - RSI and middle-band fill
+- Divergence detection:
+  - Regular Bullish
+  - Regular Bearish
+- Alerts for divergence signals
 
 ## Usage
 
-1. **Configure RSI settings**:
-    - Length
-    - Source (e.g., close, hl2, etc.)
+### Basic Configuration
 
-2. **Enable smoothing** (optional):
-    - Choose SMA, EMA, RMA, etc.
-    - Enable Bollinger Bands for dynamic ranges
-
-3. **Enable divergence detection**:
-    - Turn on `Calculate Divergence`
-    - Receive alerts when divergences are detected
+Edit the RSI parameters directly in the script UI:
 
 ```pinescript
-rsiLengthInput = input.int(14, minval=1, title="RSI Length")
-maTypeInput = input.string("SMA", "Type", options = ["None", "SMA", "SMA + Bollinger Bands", "EMA", "SMMA (RMA)", "WMA", "VWMA"])
-calculateDivergence = input.bool(false, title="Calculate Divergence")
+rsiLengthInput = input.int(14, title="RSI Length")
+rsiSourceInput = input.source(close, "Source")
+
 
  author @scrittyrow
