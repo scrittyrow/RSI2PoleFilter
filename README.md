@@ -2,12 +2,6 @@
 
 This is a TradingView Pine Script that plots a custom Relative Strength Indicator (RSI) with optional smoothing and divergence detection. It behaves similarly to the classic RSI but includes extended features like moving average overlays, Bollinger Bands, and bullish/bearish divergence detection.
 
-## Installation
-
-1. Open [TradingView](https://www.tradingview.com/).
-2. Go to the Pine Script editor.
-3. Paste the contents of `Relative Strength.txt`.
-4. Add the script to a chart.
 
 ## Features
 
