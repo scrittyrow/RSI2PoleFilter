@@ -1,88 +1,40 @@
-📘 RSI-2Pole-Filtered: Smoothed Momentum Indicator with Tunable Feedback
-Overview
-This project implements a custom momentum indicator by applying a second-order IIR (2-pole) digital filter to the classic Relative Strength Index (RSI). It’s designed for traders and analysts who want a smoother, more reliable momentum signal that reduces noise and false triggers common in raw RSI.
+# Relative Strength Indicator
 
-While RSI smoothing is common (via EMA or RMA), this implementation offers full control over filter behavior, including:
+This is a TradingView Pine Script that plots a custom Relative Strength Indicator (RSI) with optional smoothing and divergence detection. It behaves similarly to the classic RSI but includes extended features like moving average overlays, Bollinger Bands, and bullish/bearish divergence detection.
 
-Smoothing intensity
+## Installation
 
-Lag compensation
+1. Open [TradingView](https://www.tradingview.com/).
+2. Go to the Pine Script editor.
+3. Paste the contents of `Relative Strength.txt`.
+4. Add the script to a chart.
 
-Feedback vs feedforward response
+## Features
 
-📌 This filtering method is not found in conventional trading tools, and to the author's knowledge, this is the first application of a 2-pole recursive filter to RSI in Pine Script.
+- Customizable RSI length and source input
+- Optional smoothing using various moving average types
+- Bollinger Bands overlay (when selected)
+- Background fills for overbought/oversold zones
+- Divergence detection (bullish and bearish)
+- Alerts for divergences
 
-💡 Why This Matters
-RSI is a widely used momentum oscillator, but it often suffers from:
+## Usage
 
-Excessive sensitivity in sideways markets (whipsaws)
+1. **Configure RSI settings**:
+    - Length
+    - Source (e.g., close, hl2, etc.)
 
-Poor signal quality in low-volume conditions
+2. **Enable smoothing** (optional):
+    - Choose SMA, EMA, RMA, etc.
+    - Enable Bollinger Bands for dynamic ranges
 
-Lack of tunability beyond the length parameter
+3. **Enable divergence detection**:
+    - Turn on `Calculate Divergence`
+    - Receive alerts when divergences are detected
 
-This project solves that by introducing true recursive filtering from digital signal processing — enabling smoother RSI curves without sacrificing responsiveness.
+```pinescript
+rsiLengthInput = input.int(14, minval=1, title="RSI Length")
+maTypeInput = input.string("SMA", "Type", options = ["None", "SMA", "SMA + Bollinger Bands", "EMA", "SMMA (RMA)", "WMA", "VWMA"])
+calculateDivergence = input.bool(false, title="Calculate Divergence")
 
-🔍 Technical Summary
-The filtered RSI is computed using the following difference equation:
-
-y[n] = b0 * x[n] + b1 * x[n−1] + b2 * x[n−2] − a1 * y[n−1] − a2 * y[n−2]
-Where:
-
-x[n] is the raw RSI input
-
-y[n] is the smoothed output
-
-b0, b1, b2 are feedforward coefficients
-
-a1, a2 are feedback coefficients
-
-The filter is fully tunable, allowing users to trade off:
-
-Smoothing vs lag
-
-Reactivity vs noise suppression
-
-📈 Use Cases
-Momentum confirmation
-
-RSI signal filtering for trend trading
-
-Reducing whipsaws in mean-reverting strategies
-
-Visual trend smoothing for discretionary traders
-
-Feeding cleaner signals into automated systems
-
-🧪 Example Configuration
-pinescript
-b0 = 0.4
-b1 = 0.2
-b2 = 0.1
-a1 = -0.3
-a2 = 0.05
-This produces a moderately smoothed RSI with low overshoot and fast recovery. You can adjust these to fit your asset and timeframe.
-
-🚀 Getting Started
-Copy the Pine Script from the rsi_2pole_filter.pine file.
-
-Paste into TradingView → Pine Editor.
-
-Add to chart and tune coefficients to match your asset.
-
-Optionally add alerts or strategy logic.
-
-✅ Features
-Drop-in replacement for RSI in any strategy
-
-Fully tunable second-order IIR filter
-
-Compatible with TradingView
-
-Built-in overbought/oversold thresholds
-
-Clear code structure for future expansion
-
-
-👤 Author
-Created by Scrittyrow
+ author @scrittyrow
